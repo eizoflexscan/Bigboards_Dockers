@@ -1,7 +1,5 @@
 FROM eizoflexscan/docker-r-shiny-master
 
-MAINTAINER Tobias Verbeke "tobias.verbeke@openanalytics.eu"
-
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
     sudo \
