@@ -1,0 +1,42 @@
+<h5>General Idea </h5>
+<p>
+Angle-based Outlier Degree (ABOD) approaches are Global approach to outlier detection. It examines the spectrum of pairwise angles between a given point and all other
+points. Outliers are points that have a spectrum featuring high fluctuation. In other words, 
+
+<ul>
+<li> Point p is an outlier if most other objects are located in similar directions (i.e. small ABOD) </li>
+<li> Point p is no outlier if many other objects are located in varying directions (i.e. High ABOD)</li>
+
+The algorithm in our case performs the basic and aprroximated version of angle-based outlier detection algorithm.
+The ABOD method is especially useful for high-dimensional data, as angle is a more robust
+measure than distance in high-dimensional space. The basic version calculate the angle variance
+based on the whole data. The results obtained are more reliable. However, the speed can be very
+slow. The approximated version calculate the angle variance based on a subset of data and thereby,
+increasing the calculation speed. This function is based on the work of Krigel, H.P., Schubert, M.,
+Zimek, A., Angle-based outlier detection in high dimensional data, 2008.
+</p>
+
+
+
+</br>
+</br>
+  
+<img src = "img/abod.png" alt="Angle-based Outlier Degree (ABOD)" style = "width = 10%; align = center; text-align: center;">  
+
+
+<h5> Advantage </h5>
+
+<p>
+Angles are more stable than distances in high dimensional spaces (cf.e.g. the popularity of cosine-based similarity measures for text data)
+</p>
+
+<h5> Assumptions </h5>
+<p>
+<ul>
+<li> Outliers are at the border of the data distribution </li>
+<li> Normal points are in the center of the data distribution </li>
+</ul>
+</p>
+
+
+<h5> Model Limit </h5>

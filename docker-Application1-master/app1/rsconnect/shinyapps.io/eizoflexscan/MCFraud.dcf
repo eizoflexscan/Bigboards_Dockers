@@ -1,0 +1,8 @@
+name: MCFraud
+account: eizoflexscan
+server: shinyapps.io
+bundleId: 484276
+url: https://eizoflexscan.shinyapps.io/MCFraud/
+when: 1466407751.3578
+asMultiple: FALSE
+asStatic: FALSE

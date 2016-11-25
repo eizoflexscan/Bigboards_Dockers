@@ -1,0 +1,34 @@
+<h5> General idea </h5>
+<p>Local Outlier Factor is a k-NN algorithm based on the concept of density. If the proximity of an object considerably deviates from the proximity of other objects it is considered an outlier.  
+In other words, the more isolated is a record,the higher is the likelihood it is originating from anomalies. 
+Local Outlier Factor of point <italic> p</italic> is defined as the average ratio of local reachability distance of the k-NN neighbors 
+(i.e. the reference set) of point p and local reachability distance of point p. 	
+<ul> 
+<li> If LOF is closed to 1 the point is in a cluster (region with homogeneous density around the point and its neighbors). </li>
+<li> If LOF >> 1, the point is an outlier. </li>
+</ul>
+</p>
+
+</br>
+</br>
+  
+  
+<img src = "img/lof.png" alt="Control Chart Plot" style = "width = 10%; align = center; text-align: center;">  
+
+
+<h5> Model Limits </h5>
+<p>
+<ul> 
+<li> In regions of low density, it may be hard to detect outliers </li>
+<li> Choose a low value for k is often not appropriate </li>
+<li> If clusters of different densities are not clearly separated, LOF will have problems </li>
+</ul>
+</p>
+
+<h5> Extensions</h5>
+<p>
+<ul> 
+<li> Treat low density and isolation differently (cfr. Connectivity-based oultier factor COF) </li>
+<li> Take the \epsilon-neighborhood instead of kNNs as reference set (cfr Local outlier correlation integral (LOCI))) </li>
+</ul>
+</p>

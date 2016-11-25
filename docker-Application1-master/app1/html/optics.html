@@ -1,0 +1,40 @@
+<h5>General Idea </h5>
+
+<p>The <a href ="https://en.wikipedia.org/wiki/OPTICS_algorithm">Ordering points to identify the clustering structure (OPTICS)</a> algorithm is a 
+local density-based approach. It was presented by Mihael Ankerst, Markus M. Breunig, Hans-Peter Kriegel and Jorg Sander.
+Its basic idea is similar to DBSCAN, but it addresses one of DBSCAN's major weaknesses: the problem of detecting meaningful clusters in data of varying density. 
+</br>
+
+The idea is that normal data objects have a dense neighbourhood, 
+while outliers are far apart from their neighbours, i.e. have a less dense neighbourhood. 
+The algorithm therefore compares the density around a point with the density around its local reference (i.e. clusters of arbitrary shape).
+Anomalies  are a set of data points that are very different from the other data points (i.e. point not assign to any cluster), and thus outliers.
+</p>
+
+</br>
+</br>
+  
+<img src = "img/optic.png" alt="Density-Based Saptial Clustering Plot" style = "width = 10%; align = center; text-align: center;">  
+<img src = "img/optics.png" alt="Density-Based Saptial Clustering Plot" style = "width = 10%; align = center; text-align: center;">  
+
+<h5> Advantages </h5>
+<p>
+<ul>
+<li> No assumption on the number of normal mechanisms is made. </li>
+<li>It finds clusters of arbitrary shape in large datasets. </li>
+<li>It provides relevant clusters even if the dataset contains noise. </li>
+</ul>
+</p>
+
+<h5> Model Limit </h5>
+
+<p>
+<ul>
+<li> The density around a normal data object is similar to the density around its neighbours. </li>
+<li> The density around an outlier is considerably different to the density around its neighbours. </li>
+<li> Accuracy of outlier detection depends on how good the clustering algorithm captures the structure of clusters (i.e. how reference set is chosen). </li>
+<li> A set of many abnormal data objects that are similar to each other would be recognized as a cluster rather than as noise/outliers. </li>
+<li> This guarantee is valuable to the extent that outliers should not impact the construction of the clusters which will keep their integrity. </li>                                    
+</ul>
+</p>
+
