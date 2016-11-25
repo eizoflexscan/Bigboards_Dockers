@@ -41,6 +41,3 @@ COPY Rprofile.site /usr/lib/R/etc/
 
 # Expose the Shiny proxy port
 EXPOSE 3838
-
-# Start Shiny Server 
-CMD ["R", "-e shiny::runApp('/root/app1')"]
