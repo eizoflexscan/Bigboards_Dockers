@@ -43,4 +43,4 @@ COPY Rprofile.site /usr/lib/R/etc/
 EXPOSE 3838
 
 # Start Shiny Server 
-CMD ["R", "-e shinyproxy::run_01_hello()"]
+CMD ["R", "-e shiny::runApp('/root/app1')"]
