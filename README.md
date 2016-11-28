@@ -13,6 +13,8 @@ To Be done!!!
 
 ## Customize your own tint
 
+Short desciption of each repository. Browse in each repository and read the 'Readme file' for more details.
+
 ### bb-stack-spark-on-hadoop-master
 
 ### docker-rstudio-server-master
