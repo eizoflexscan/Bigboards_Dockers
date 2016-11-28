@@ -1,5 +1,5 @@
 # R tint on Bigboards
-===============================
+---------------------------
 
 
 This repository contains the necessary files for setting up a Hadoop, Spark, Rstudio & Shiny containerized application up and running on a [Bigboard](www.bigboards.io).
@@ -16,7 +16,8 @@ To Be done!!!
 Short desciption of each repository. Browse in each repository and read the 'Readme file' for more details.
 
 ### bb-stack-spark-on-hadoop-master
-
+#### Description
+Spark on Hadoop Apache Spark is used as cluster computing framework with implicit data parallelism and fault-tolerance..... do be done
 
 ### docker-rstudio-server-master
 #### Description
