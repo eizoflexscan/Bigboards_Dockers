@@ -1,7 +1,7 @@
 shiny:
   proxy:
     title: MC DataLab
-    logo-url: http://www.openanalytics.eu/sites/www.openanalytics.eu/themes/oa/logo.png
+    logo-url: http://qualitynights.be/wp-content/uploads/2015/09/MC.jpg
     landing-page: /
     heartbeat-rate: 10000
     heartbeat-timeout: 60000
@@ -24,15 +24,17 @@ shiny:
       port-range-start: 20000
   apps:
   - name: app1
-    display-name: Fraud Detection Example
-    description: Application which demonstrates fraud detection on fake data
+    display-name: Demo Application 1
+    description: A fake application on fraud
     docker-cmd: ["R", "-e shinyproxy::run_app1()"]
     docker-image: eizoflexscan/docker-shiny-app1-master
     groups: scientists, mathematicians
   - name: app2
+  	display-name: Demo Application 2
+    description: A basic demo application developed by open analytics
     docker-cmd: ["R", "-e shinyproxy::run_&app2()"]
     docker-image: eizoflexscan/docker-shiny-app2-master
-    groups: scientistsss
+    groups: scientists
 
 logging:
   file:
