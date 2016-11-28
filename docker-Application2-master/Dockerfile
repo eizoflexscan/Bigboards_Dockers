@@ -26,7 +26,7 @@ RUN R -e "install.packages('Rmpfr', repos='https://cloud.r-project.org/')"
 
 # copy the app to the image
 RUN mkdir /root/app2
-COPY euler /root/app2
+COPY app2 /root/app2
 
 COPY Rprofile.site /usr/lib/R/etc/
 
