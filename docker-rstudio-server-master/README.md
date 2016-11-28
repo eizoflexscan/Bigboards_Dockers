@@ -37,9 +37,11 @@ ENV RSTUDIO_SERVER_VERSION 0.99.1251
 ```
 
 #### Step 3 : Install dependencies
-Install dependencies external to R and Rstudio,
-```sh
+Install dependencies external to R and Rstudio. But before doing so, cached metadata of the base image such as repositories and lists of available packages have to be cleaned, updated or upgrated to avoid errors when the live repositories you're pulling data from have changed.
+
+```shhaving cleaned, updated or upgrated 
 RUN set -e \
+  && apt-get clean \
   && apt-get -y update \
   && apt-get -y upgrade \
   && apt-get -y install \
