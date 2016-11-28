@@ -1,7 +1,5 @@
 FROM bigboards/base-__arch__
 
-MAINTAINER Koen Rutten <koen.rutten@vectr.consulting>
-
 # install dependencies
 RUN apt-get clean && \
 	apt-get update && \
@@ -14,7 +12,7 @@ RUN codename=$(lsb_release -c -s) && \
 	apt-get update && apt-get install -y r-base r-base-dev
 
 # install R libraries
-RUN R -e 'install.packages(c("ggplot2","caret","tidyr","stringr","caretEnsemble","party","devtools","randomForest","ada","doMC","evaluate","formatR","highr","markdown","yaml","htmltools","caTools","bitops","knitr","rmarkdown","ROCR","gplots","dplyr","plyr","pROC","e1071","gbm"), repos="http://cran.freestatistics.org/", dependencies=NA,clean=TRUE)'  && \
+RUN R -e 'install.packages(c("ggplot2","devtools"), repos="http://cran.freestatistics.org/", dependencies=NA,clean=TRUE)'  && \
 	R -e 'library("devtools"); install_github("mbojan/alluvial")' && \
 	R -e 'update.packages(ask=FALSE,repos="http://cran.freestatistics.org/")'
 		
@@ -38,7 +36,7 @@ RUN chmod +x /tmp/build_logins.sh && \
  	./tmp/build_logins.sh 4 && \
  	rm /tmp/build_logins.sh
 
-# Remove the package list to reduce image size. Note: do this as the last thing of the build process as installs can fail due to this!
+# Remove the package list to reduce image size. Note: do this as the last thing of the build process as install can fail due to this!
 # Additional cleanup
 RUN apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
