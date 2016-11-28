@@ -3,7 +3,8 @@ FROM bigboards/base-__arch__
 MAINTAINER Koen Rutten <koen.rutten@vectr.consulting>
 
 # install dependencies
-RUN apt-get update && \
+RUN apt-get clean && \
+	apt-get update && \
 	apt-get install -y gdebi-core libapparmor1 wget libcurl4-openssl-dev 
 
 # install latest R Base 
