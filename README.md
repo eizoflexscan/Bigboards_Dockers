@@ -17,7 +17,7 @@ Short desciption of each repository. Browse in each repository and read the 'Rea
 
 ### bb-stack-spark-on-hadoop-master
 #### Description
-Spark on Hadoop Apache Spark is used as cluster computing framework with implicit data parallelism and fault-tolerance..... do be done
+Spark on Hadoop Apache Spark is used as cluster computing framework with implicit data parallelism and fault-tolerance..... TO be written!!!
 
 ### docker-rstudio-server-master
 #### Description
