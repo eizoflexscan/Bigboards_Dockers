@@ -24,7 +24,7 @@ RUN R -e "install.packages(c('shinydashboard', 'ggplot2', 'RcolorBrewer', 'data.
 
 # copy the app to the image
 RUN mkdir /root/app1
-COPY euler /root/app1
+COPY app1 /root/app1
 
 COPY Rprofile.site /usr/lib/R/etc/
 
