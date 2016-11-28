@@ -6,7 +6,9 @@ This repository contains the necessary files for setting up a Hadoop, Spark, Rst
 
 No prior knowledge of containers or Docker is necessary, but it assumed that your cluster is linked to the Hive http://docs.bigboards.io/en/latest/gettingstarted/. 
 
-## Load existing tint
+## Load the existing R-tint
+There is a publicly open tint, called 'R tint'. From your hive, dubble click on it to install....
+To Be done!!!
 
 
 ## Customize your own tint
@@ -22,8 +24,6 @@ No prior knowledge of containers or Docker is necessary, but it assumed that you
 
 
 Step0: Check bigboards existing containers 
-The bigboards contai ners are also hosted there. You can choose one of these docker containers to use inside your app https://hub.docker.com/u/bigboards/, https://github.com/bigboards?page=5 or you can continue reading on how to create your own. And see the structure. Should have a folder named "R" containing the dockerfile and a folder named config containing the configuration file. 
 
 
-TO BE DONE!!!!
 
