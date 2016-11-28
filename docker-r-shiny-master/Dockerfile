@@ -13,7 +13,7 @@ RUN codename=$(lsb_release -c -s) && \
 	apt-get update && apt-get install -y r-base r-base-dev
 
 # install R libraries
-RUN R -e 'install.packages(c('devtools','shiny',  'rmarkdown', 'SparkR'), repos="http://cran.freestatistics.org/", dependencies=NA,clean=TRUE)'  && \
+RUN R -e 'install.packages(c("devtools","shiny", "rmarkdown"), repos="http://cran.freestatistics.org/", dependencies=NA,clean=TRUE)'  && \
 	R -e 'library("devtools"); install_github("mbojan/alluvial")' && \
 	R -e 'update.packages(ask=FALSE,repos="http://cran.freestatistics.org/")'
 		
@@ -25,8 +25,7 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-# install shiny proxy with demo shiny application
-# from https://github.com/openanalytics/shinyproxy-demo/blob/master/Dockerfile 
+# install shiny proxy 
 COPY shinyproxy_0.0.1.tar.gz /root/
 RUN R CMD INSTALL /root/shinyproxy_0.0.1.tar.gz
 RUN rm /root/shinyproxy_0.0.1.tar.gz
