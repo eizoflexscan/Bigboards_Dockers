@@ -1,5 +1,8 @@
 FROM eizoflexscan/shiny
 
+# To avoid problem from https sources 
+RUN apt-transport-https
+
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
     sudo \
