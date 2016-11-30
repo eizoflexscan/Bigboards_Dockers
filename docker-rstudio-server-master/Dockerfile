@@ -1,4 +1,4 @@
-FROM bigboards/base-__arch__
+FROM bigboards/java-8-x86_64
 
 # install dependencies
 RUN apt-get clean && \
