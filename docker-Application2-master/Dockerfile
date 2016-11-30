@@ -1,19 +1,5 @@
 FROM eizoflexscan/shiny
 
-# To avoid problem from https sources 
-RUN apt-transport-https
-
-# system libraries of general use
-RUN apt-get update && apt-get install -y \
-    sudo \
-    pandoc \
-    pandoc-citeproc \
-    libcurl4-gnutls-dev \
-    libcairo2-dev \
-    libxt-dev \
-    libssl-dev \
-    libssh2-1-dev \
-    libssl1.0.0
 
 # system library dependency for the euler app
 RUN apt-get update && apt-get install -y \
