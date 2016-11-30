@@ -1,4 +1,4 @@
-FROM openanalytics/r-base
+FROM eizoflexscan/shiny
 
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
