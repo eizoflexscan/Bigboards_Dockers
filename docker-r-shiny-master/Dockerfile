@@ -26,7 +26,7 @@ RUN codename=$(lsb_release -c -s) && \
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 && \
 	apt-get update && apt-get install -y r-base r-base-dev
 
-# install R libraries
+# install R libraries (basic shiny functionality)
 RUN R -e 'install.packages(c("devtools","shiny", "rmarkdown"), repos="http://cran.freestatistics.org/", dependencies=NA,clean=TRUE)'  && \
 	R -e 'library("devtools"); install_github("mbojan/alluvial")' && \
 	R -e 'update.packages(ask=FALSE,repos="http://cran.freestatistics.org/")'
