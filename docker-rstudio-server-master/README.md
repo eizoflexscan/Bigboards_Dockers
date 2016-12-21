@@ -3,7 +3,7 @@
 
 ## Overview 
 
-This repository contains the necessary files for setting up a  [Rstudio Server 1.0.44 with R 3.3.2](https://www.rstudio.com/products/rstudio/#Server) containerized application up and running on a [Bigboard](www.bigboards.io).
+This repository contains the necessary files for setting up a  [Rstudio Server 1.0.44 with 3.3.1](https://www.rstudio.com/products/rstudio/#Server) containerized application up and running on a [Bigboard](www.bigboards.io).
 
 Rstudio is an integrated development environment (IDE) targeted specifically at data scientists. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management. The server version  allows one to work with R on a remote server as if it were a local R Console. 
 
@@ -156,6 +156,16 @@ A configuration file to specify users and passwords. It creates 50 users named (
 
 ### run.sh file
 Start RStudio Server directly after the container creation has been finished. 
+
+## Usage
+To run container use the command below:
+
+$ docker run -d -p 8787:8787 eizoflexscan/rstudio
+
+
+## Accessing the RStudio Server applications:
+
+After that check with your browser at addresses plus the port 8787: http://host_ip:8787/
 
 
 ## Limitations
