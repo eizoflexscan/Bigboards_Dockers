@@ -53,7 +53,7 @@ RUN R -e "install.packages(c('shinydashboard', 'ggplot2', 'RcolorBrewer', 'data.
 RUN apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# copy the app to the image
+# Copy the app to the image
 RUN mkdir /root/app1
 COPY app1 /root/app1
 
