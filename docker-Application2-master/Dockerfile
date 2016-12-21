@@ -1,4 +1,4 @@
-FROM eizoflexscan/shiny
+FROM openanalytics/r-base
 
 
 # system library dependency for the euler app
