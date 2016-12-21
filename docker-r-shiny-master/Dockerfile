@@ -39,18 +39,7 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-# install shiny proxy 
-COPY shinyproxy_0.0.1.tar.gz /root/
-RUN R CMD INSTALL /root/shinyproxy_0.0.1.tar.gz
-RUN rm /root/shinyproxy_0.0.1.tar.gz
-
 # Remove the package list to reduce image size. Note: do this as the last thing of the build process as installs can fail due to this!
 # Additional cleanup
 RUN apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# set host and port
-COPY Rprofile.site /usr/lib/R/etc/
-
-# Expose the Shiny proxy port
-EXPOSE 3838
