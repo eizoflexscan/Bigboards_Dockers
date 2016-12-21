@@ -45,7 +45,7 @@ ENV LANG en_US.UTF-8
 # Basic shiny functionality
 RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cloud.r-project.org/')"
 
-# install dependencies of the app1
+# Install dependencies of the app1
 RUN R -e "install.packages(c('shinydashboard', 'ggplot2', 'RcolorBrewer', 'data.table', 'DMwR', 'outliers','caret', 'lars', 'editrules', 'kohonen', 'dbscan', 'abodOutlier'), repos='https://cloud.r-project.org/')"
 
 # Remove the package list to reduce image size. Note: do this as the last thing of the build process as installs can fail due to this!
