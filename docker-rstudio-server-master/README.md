@@ -3,9 +3,9 @@
 
 ## Overview 
 
-This repository contains the necessary files for setting up a  [Rstudio Server](https://www.rstudio.com/products/rstudio/#Server) containerized application up and running on a [Bigboard](www.bigboards.io).
+This repository contains the necessary files for setting up a  [Rstudio Server 1.0.44 with R 3.3.2](https://www.rstudio.com/products/rstudio/#Server) containerized application up and running on a [Bigboard](www.bigboards.io).
 
-Rstudio is an integrated development environment (IDE) targeted specifically at data scientists. The server version  allows one to work with R on a remote server as if it were a local R Console.
+Rstudio is an integrated development environment (IDE) targeted specifically at data scientists. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management. The server version  allows one to work with R on a remote server as if it were a local R Console. 
 
 This has proven useful,
 * if you need to run your analysis on a high-end server rather than your laptop
