@@ -4,7 +4,21 @@ MAINTAINER BigBoards <hello@bigboards.io>
 
 # install dependencies
 RUN apt-get update && \
-	apt-get install -y gdebi-core libapparmor1 wget libcurl4-openssl-dev 
+	apt-get install -y \
+    					gdebi-core \ 
+    					libapparmor1 \
+                        wget \
+                        libcurl4-openssl-dev \ 
+                        sudo \
+                        pandoc \
+                        pandoc-citeproc \
+                        libcurl4-gnutls-dev \
+                        libcairo2-dev \
+                        libxt-dev \
+                        libssl-dev \
+                        libssh2-1-dev \
+                        libssl1.0.0 \
+                        libmpfr-dev
 
 # install latest R Base 
 RUN codename=$(lsb_release -c -s) && \
