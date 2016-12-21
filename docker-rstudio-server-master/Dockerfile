@@ -3,7 +3,7 @@ FROM bigboards/java-8-x86_64
 # install dependencies
 RUN apt-get clean && \
 	apt-get update && \
-	apt-get install -y gdebi-core libapparmor1 wget libcurl4-openssl-dev 
+	apt-get install -y gdebi-core libapparmor1 wget libcurl4-openssl-dev sudo libssl1.0.0
 
 # install latest R Base 
 RUN codename=$(lsb_release -c -s) && \
@@ -17,9 +17,9 @@ RUN R -e 'install.packages(c("ggplot2","devtools", "SparkR"), repos="http://cran
 	R -e 'update.packages(ask=FALSE,repos="http://cran.freestatistics.org/")'
 		
 # install RStudio
-RUN wget -O /tmp/rstudio.deb http://download2.rstudio.org/rstudio-server-0.99.902-amd64.deb && \
-    gdebi -n /tmp/rstudio.deb && \
-    rm /tmp/rstudio.deb
+RUN  wget http://download2.rstudio.org/rstudio-server-1.0.44-amd64.deb \
+                                              && gdebi -n rstudio-server-1.0.44-amd64.deb \
+                                              && rm /rstudio-server-1.0.44-amd64.deb
     
 ## Configure default locale, see https://github.com/rocker-org/rocker/issues/19
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
@@ -30,11 +30,11 @@ ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 
 # Add users for RStudio, the sleep is added because older versions of docker have an issue with chmod
-ADD build_logins.sh /tmp/build_logins.sh
-RUN chmod +x /tmp/build_logins.sh && \
-	sleep 1 && \
- 	./tmp/build_logins.sh 4 && \
- 	rm /tmp/build_logins.sh
+### ADD build_logins.sh /tmp/build_logins.sh
+### RUN chmod +x /tmp/build_logins.sh && \
+###	sleep 1 && \
+### 	./tmp/build_logins.sh 4 && \
+### 	rm /tmp/build_logins.sh
 
 # Remove the package list to reduce image size. Note: do this as the last thing of the build process as install can fail due to this!
 # Additional cleanup
