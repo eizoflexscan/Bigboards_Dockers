@@ -177,6 +177,56 @@ Start RStudio Server directly after the container creation has been finished.
 
 ## Configuration
 
+Now, you could configure it a bit more, adding users, more packages, and scheduled jobs.
+
+If you have a lot of configurations then it is better to create your own DOCKERFILE and build the image yourself.
+
+We log in to the running docker container for future customisation:
+
+```sh
+sudo docker exec -it rstudio-server bash
+```
+
+
+You are now in the Docker container.
+
+Install stuff then CTRL-D to come out again to commit and push your changes.
+
+#### Make users that will create a directory on the data disk
+```sh
+adduser mark
+```
+
+#### [Optional] Install packages
+
+##### install as sudo to ensure all user's have access
+```sh
+sudo su - -c "R -e \"install.packages('abc', repos='http://cran.rstudio.com/')\""
+```
+##### [Optional] Install libraries from Github packages
+```
+sudo su - -c "R -e \"devtools::install_github('MarkEdmondson1234/bigQueryR')\""
+```
+
+CTRL-D to come out of the docker container again
+
+##### to get the container id e.g. c3f279d17e0a
+sudo docker ps 
+
+##### commit with a message
+sudo docker commit -a "Mark" -m "Added R stuff" \
+    CONTAINER_ID yourname/your-new-docker-image
+
+##### list your new image with the old
+sudo docker images
+
+##### tag the image with the location
+sudo docker tag yourname/your-new-docker-image \
+                gcr.io/your-project-id/your-new-docker-image
+
+##### push to Google Docker registry
+sudo gcloud docker push \
+     gcr.io/your-project-id/your-new-docker-image
 
 
 ## Usage
