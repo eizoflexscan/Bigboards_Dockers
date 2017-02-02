@@ -169,11 +169,43 @@ CMD ["./init/run.sh"]
 
 
 ### build_logins.sh file
+The metadata is kept seperate away from your running containers. This can be used for things like passwords and security settings you would prefer not to be shipped in a Docker container, and is easier to manage - just edit the metadata keys.
+
 A configuration file to specify users and passwords. It creates 50 users named (datafriend1, datafriend2,..., datafriend50) and 50 passwords that are the same as the user names (datafriend1, datafriend2,..., datafriend50).
+
+Example
+```sh
+#!/bin/bash
+GH_USER=$(curl http://metadata/computeMetadata/v1/instance/attributes/github-user -H "Metadata-Flavor: Google")
+GH_REPO=$(curl http://metadata/computeMetadata/v1/instance/attributes/github-repo -H "Metadata-Flavor: Google")
+GH_DATA=$(curl http://metadata/computeMetadata/v1/instance/attributes/github-data -H "Metadata-Flavor: Google")
+GH_PAT=$(curl http://metadata/computeMetadata/v1/instance/attributes/github-pat -H "Metadata-Flavor: Google")
+
+## Run Docker image
+docker run --name rstudio-server \
+       -d -p 8787:8787 \
+       -e USER=ADMIN_USERNAME \
+       -e PASSWORD=ADMIN_PW \
+       -v /mnt/data/:/home/ \
+       gcr.io/your-project-name/your-image-name
+
+## Data files: update from github
+cd /mnt/data/user_name/project_name/data
+git pull 'https://'$GH_USER':'$GH_PAT'@github.com/'$GH_USER'/'$GH_DATA'.git'
+
+## Private packages 
+# 1. pull from github
+cd /mnt/data/R/privatePackageName
+git pull 'https://'$GH_USER':'$GH_PAT'@github.com/'$GH_USER'/'$GH_REPO'.git'
+
+# 2. Install the package from the local file you just updated from Git
+sudo docker exec -it rstudio-server \
+     sudo su - -c "R -e \"devtools::install('/home/R/localPackageName/')\""
+
 
 ### run.sh file
 Start RStudio Server directly after the container creation has been finished. 
-
+```
 
 ## Configuration
 
@@ -204,30 +236,37 @@ adduser mark
 sudo su - -c "R -e \"install.packages('abc', repos='http://cran.rstudio.com/')\""
 ```
 ##### [Optional] Install libraries from Github packages
-```
+```sh
 sudo su - -c "R -e \"devtools::install_github('MarkEdmondson1234/bigQueryR')\""
 ```
 
 CTRL-D to come out of the docker container again
 
 ##### to get the container id e.g. c3f279d17e0a
+```sh
 sudo docker ps 
-
+```
 ##### commit with a message
+```sh
 sudo docker commit -a "Mark" -m "Added R stuff" \
     CONTAINER_ID yourname/your-new-docker-image
-
+```
 ##### list your new image with the old
+```
 sudo docker images
+```
 
 ##### tag the image with the location
+```sh
 sudo docker tag yourname/your-new-docker-image \
                 gcr.io/your-project-id/your-new-docker-image
+```
 
 ##### push to Google Docker registry
+```sh
 sudo gcloud docker push \
      gcr.io/your-project-id/your-new-docker-image
-
+```
 
 ## Usage
 To run container use the command below:
