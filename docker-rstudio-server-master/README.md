@@ -22,6 +22,12 @@ But it can also be combined with Hadoop, Spark and Shiny to get a full R Stack (
 #### Step 1 : Load pre-existing image
 Tells Docker which image your image is based on with the "FROM" keyword. In our case, we'll use the Bigboards base image bigboards/base-__arch__ as the foundation to build our app. 
 
+Alternatively 
+We first download a pre-prepared RStudio Docker container created by the Rocker team led by Dirk Eddelbuettel. This is what our custom image will be based upon. Here we download a variant that also loads RStudio and all of Hadley’s packages to give us a great base to work from.
+
+Most of the below is gleaned from the Rocker Wiki.
+
+
 ```sh
 FROM bigboards/base-__arch__
 ```
@@ -121,6 +127,17 @@ RUN chmod +x /tmp/build_logins.sh && \
 	sleep 1 && \
  	./tmp/build_logins.sh 4 && \
  	rm /tmp/build_logins.sh
+```
+
+
+We run it with a custom username and password we want, as this will be exposed to the web and we don’t want the defaults to be exposed. TO BE corrected
+
+```sh
+## Run the docker image with RStudio and Hadley Universe
+sudo docker run --name rstudio-server -d -p 8787:8787 \
+     -e USER=YOUR_USERNAME -e PASSWORD=YOUR_PW \
+     -v /mnt/data/:/home/ \
+     rocker/hadleyverse
 ```
 
 #### Step 9: Reduce image size  
