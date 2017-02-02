@@ -157,6 +157,11 @@ A configuration file to specify users and passwords. It creates 50 users named (
 ### run.sh file
 Start RStudio Server directly after the container creation has been finished. 
 
+
+## Configuration
+
+
+
 ## Usage
 To run container use the command below:
 
